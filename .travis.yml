@@ -13,3 +13,5 @@ deploy:
   app: mongo-0004
   on:
     repo: brunopgalvao/mongodb-mongoose-express-ci-01
+  run:
+    - "node seed/userProjects.js"
