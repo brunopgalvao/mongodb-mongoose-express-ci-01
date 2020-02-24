@@ -6,7 +6,7 @@ const Project = require('../models/project')
 const User = require('../models/user')
 const faker = require('faker')
 
-beforeAll(async () => {
+beforeAll(async (done) => {
     const MONGODB_URI = `mongodb://127.0.0.1/${databaseName}`
     await mongoose.connect(MONGODB_URI, { useUnifiedTopology: true, useNewUrlParser: true })
 
@@ -33,6 +33,7 @@ beforeAll(async () => {
     })
     await Project.insertMany(projects)
     console.log('Created projects!')
+    done()
 })
 
 let project, user
@@ -96,7 +97,8 @@ describe('Projects API', () => {
     })
 })
 
-afterAll(async () => {
+afterAll(async (done) => {
     await mongoose.connection.db.dropDatabase()
     await mongoose.connection.close()
+    done()
 })
