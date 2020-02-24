@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest tests --detectOpenHandles --forceExit",
+    "test": "jest tests   --testTimeout=10000 --detectOpenHandles --forceExit",
     "dev": "nodemon server.js",
     "start": "node server.js",
     "coverage": "jest --coverage && cat ./coverage/lcov.info | coveralls"
